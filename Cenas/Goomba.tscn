@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c6pm2fhdtbl8q"]
+
+[ext_resource type="Script" uid="uid://ttv10uan5xtk" path="res://Cenas/goomba.gd" id="1_htsnj"]
+[ext_resource type="Texture2D" uid="uid://dl0kuv8e1o6n3" path="res://Assets Super Mario Bros/Sprites/Goomba_Flat.png" id="2_ccebh"]
+[ext_resource type="Texture2D" uid="uid://dhmodocnsu7ds" path="res://Assets Super Mario Bros/Sprites/Goomba_Walk1.png" id="3_23ll3"]
+[ext_resource type="Texture2D" uid="uid://cxtty1fuwy5ab" path="res://Assets Super Mario Bros/Sprites/Goomba_Walk2.png" id="4_hcrsl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gsdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ccebh")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_23ll3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hcrsl")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogbw0"]
+size = Vector2(16, 16)
+
+[node name="Goomba" type="Area2D" unique_id=930527396]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_htsnj")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1847985008]
+sprite_frames = SubResource("SpriteFrames_2gsdq")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.6311507
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=682903714]
+shape = SubResource("RectangleShape2D_ogbw0")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1954655509]
+target_position = Vector2(0, 8)
+collision_mask = 18
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=351926419]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
