@@ -290,9 +290,11 @@ script = ExtResource("25_eiq6q")
 collision_mask = 6
 
 [node name="AreaCollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=968570194]
+position = Vector2(0, -4)
 shape = ExtResource("2_gxa6g")
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="." unique_id=876947832]
+position = Vector2(0, -0.5)
 shape = ExtResource("2_gxa6g")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

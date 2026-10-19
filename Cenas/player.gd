@@ -5,6 +5,9 @@ class_name Player
 signal points_scored(points: int)
 
 const POINTS_LABEL_SCENE = preload("res://Cenas/PointsLabel.tscn")
+const FIREBALL_SCENE = preload("res://Cenas/fireball.tscn")
+const SMALL_MARIO_SHAPE = preload("res://Resources/CollisionShapes/small_mario.tres")
+const BIG_MARIO_SHAPE = preload("res://Resources/CollisionShapes/big_mario.tres")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D as PlayerAnimatedSprite
 @onready var area_collision_shape_2d = $Area2D/AreaCollisionShape2D
@@ -15,6 +18,7 @@ const POINTS_LABEL_SCENE = preload("res://Cenas/PointsLabel.tscn")
 @export var run_speed_damping = 0.5
 @export var speed = 200.0
 @export var jump_velocity = -350
+@export var gravity: float = 980.0
 @export_group("")
 
 @export_group("Stomping Enemies")
@@ -23,11 +27,11 @@ const POINTS_LABEL_SCENE = preload("res://Cenas/PointsLabel.tscn")
 @export var stomp_y_velocity = -150
 @export_group("")
 
-@export var gravity: float = 980.0
 var player_mode = PlayerMode.SMALL
 var is_dead = false
+var is_invulnerable = false
 
-enum PlayerMode{
+enum PlayerMode {
 	SMALL,
 	BIG,
 	SHOOTING
@@ -44,6 +48,10 @@ func _physics_process(delta):
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 
+	# Ação Extra 2: Disparo de Bola de Fogo
+	if Input.is_action_just_pressed("shoot") and player_mode == PlayerMode.SHOOTING:
+		shoot_fireball()
+
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = lerp(velocity.x, speed * direction, run_speed_damping * delta)
@@ -53,6 +61,35 @@ func _physics_process(delta):
 	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
 
 	move_and_slide()
+
+# Ação Extra 1: Mudar de tamanho para BIG
+func become_big():
+	if player_mode == PlayerMode.SMALL:
+		player_mode = PlayerMode.BIG
+		animated_sprite_2d.play("small_to_big")
+		set_collision_shapes(BIG_MARIO_SHAPE)
+
+# Ativação do modo de tiro (Shooting)
+func become_shooting():
+	if player_mode == PlayerMode.SMALL:
+		animated_sprite_2d.play("small_to_shooting")
+	else:
+		animated_sprite_2d.play("big_to_shooting")
+	player_mode = PlayerMode.SHOOTING
+	set_collision_shapes(BIG_MARIO_SHAPE)
+
+func shoot_fireball():
+	animated_sprite_2d.play("shooting")
+	var fireball = FIREBALL_SCENE.instantiate() as Fireball
+	fireball.direction = int(sign(animated_sprite_2d.scale.x))
+	if fireball.direction == 0:
+		fireball.direction = 1
+	fireball.global_position = global_position + Vector2(12 * fireball.direction, -4)
+	get_tree().current_scene.add_child(fireball)
+
+func set_collision_shapes(new_shape: Shape2D):
+	area_collision_shape_2d.set_deferred("shape", new_shape)
+	body_collision_shape_2d.set_deferred("shape", new_shape)
 
 func _on_area_2d_area_entered(area):
 	if area is Enemy:
@@ -85,11 +122,29 @@ func spawn_points_label(enemy):
 	points_scored.emit(enemy.points_value)
 
 func die():
+	if is_invulnerable or is_dead:
+		return
 	if player_mode == PlayerMode.SMALL:
-		is_dead = true
-		animated_sprite_2d.play("small_death")
-		set_physics_process(false)
-		var death_tween = get_tree().create_tween()
-		death_tween.tween_property(self, "position", position + Vector2(0, -48), .5)
-		death_tween.chain().tween_property(self, "position", position + Vector2(0, 256), 1)
-		death_tween.tween_callback(func (): get_tree().reload_current_scene());
+		instant_die()
+	else:
+		# Se atingido enquanto BIG ou SHOOTING, volta para SMALL com tempo de invulnerabilidade
+		player_mode = PlayerMode.SMALL
+		set_collision_shapes(SMALL_MARIO_SHAPE)
+		is_invulnerable = true
+		modulate.a = 0.5
+		get_tree().create_timer(1.5).timeout.connect(func():
+			is_invulnerable = false
+			modulate.a = 1.0
+		)
+
+func instant_die():
+	if is_dead:
+		return
+	is_dead = true
+	Manager.lose_life()
+	animated_sprite_2d.play("small_death")
+	set_physics_process(false)
+	var death_tween = get_tree().create_tween()
+	death_tween.tween_property(self, "position", position + Vector2(0, -48), .5)
+	death_tween.chain().tween_property(self, "position", position + Vector2(0, 256), 1)
+	death_tween.tween_callback(func (): get_tree().reload_current_scene());

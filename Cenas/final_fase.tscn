@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://do3ht5dg6mee"]
+
+[ext_resource type="Script" uid="uid://dn8p085st7tjq" path="res://final_fase.gd" id="1_e4nni"]
+[ext_resource type="Texture2D" uid="uid://ir6sodu1lnqy" path="res://Assets Super Mario Bros/Sprites/FlagPole.png" id="2_0qi6k"]
+[ext_resource type="Texture2D" uid="uid://d2wjjqv82whrs" path="res://Assets Super Mario Bros/Sprites/Flag.png" id="3_5ifx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kvfm"]
+size = Vector2(34, 185)
+
+[node name="FinalFase" type="Area2D" unique_id=420086726]
+position = Vector2(1, -2)
+script = ExtResource("1_e4nni")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1908837551]
+texture = ExtResource("2_0qi6k")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=906677555]
+position = Vector2(-11.5, -85.5)
+scale = Vector2(1.5625, 1.6875)
+texture = ExtResource("3_5ifx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=227780058]
+position = Vector2(-7, -10.5)
+shape = SubResource("RectangleShape2D_3kvfm")

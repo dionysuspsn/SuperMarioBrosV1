@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://wcxrp7puu4dp"]
+
+[ext_resource type="Script" uid="uid://cewvhdgict40s" path="res://fireball.gd" id="1_avhrs"]
+[ext_resource type="Texture2D" uid="uid://c135f55fbxgm3" path="res://Assets Super Mario Bros/Sprites/fireball1.png" id="2_jeu5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4f2j"]
+radius = 4.0
+
+[node name="Fireball" type="Area2D" unique_id=639627282]
+script = ExtResource("1_avhrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=966865782]
+texture = ExtResource("2_jeu5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1282693925]
+shape = SubResource("CircleShape2D_l4f2j")
