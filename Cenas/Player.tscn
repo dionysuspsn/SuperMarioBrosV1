@@ -274,6 +274,12 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=74495717]
 collision_mask = 6
 script = ExtResource("1_gxa6g")
+run_speed_damping = null
+speed = null
+jump_velocity = null
+min_stomp_degree = null
+max_stomp_degree = null
+stomp_y_velocity = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1800366768]
 sprite_frames = SubResource("SpriteFrames_j8o4j")

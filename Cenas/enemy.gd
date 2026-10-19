@@ -7,7 +7,6 @@ const POINTS_LABEL_SCENE = preload("res://Cenas/PointsLabel.tscn")
 @export var horizontal_speed = 20
 @export var vertical_speed = 100
 @export var points_value: int = 100
-
 @onready var ray_cast_2d = $RayCast2D as RayCast2D
 @onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
 

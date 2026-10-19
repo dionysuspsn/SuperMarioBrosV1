@@ -23,7 +23,7 @@ const POINTS_LABEL_SCENE = preload("res://Cenas/PointsLabel.tscn")
 @export var stomp_y_velocity = -150
 @export_group("")
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var gravity: float = 980.0
 var player_mode = PlayerMode.SMALL
 var is_dead = false
 
@@ -35,7 +35,8 @@ enum PlayerMode{
 
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		var current_gravity = gravity if gravity != null else 980.0
+		velocity.y += current_gravity * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
@@ -77,10 +78,10 @@ func on_enemy_stomped():
 
 func spawn_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
-	points_label.text = str(enemy.points_value) # Usa o valor específico do inimigo (100 ou 300)
+	points_label.text = str(enemy.points_value)
 	points_label.position = enemy.position + Vector2(-20, -20)
 	get_tree().root.add_child(points_label)
-	Manager.add_points(enemy.points_value) # Soma globalmente no Manager que você criou
+	Manager.add_points(enemy.points_value)
 	points_scored.emit(enemy.points_value)
 
 func die():
