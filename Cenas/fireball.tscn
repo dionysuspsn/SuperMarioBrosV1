@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wcxrp7puu4dp"]
 
-[ext_resource type="Script" uid="uid://cewvhdgict40s" path="res://fireball.gd" id="1_avhrs"]
+[ext_resource type="Script" uid="uid://cewvhdgict40s" path="res://Cenas/fireball.gd" id="1_avhrs"]
 [ext_resource type="Texture2D" uid="uid://c135f55fbxgm3" path="res://Assets Super Mario Bros/Sprites/fireball1.png" id="2_jeu5k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4f2j"]

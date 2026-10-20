@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b7dhdqw8d2e2"]
+
+[ext_resource type="Texture2D" uid="uid://nyqq0hp0tl4h" path="res://Assets Super Mario Bros/Sprites/Espaco/diamante.png" id="1_k1nqo"]
+[ext_resource type="Script" uid="uid://c4peyp7j603m3" path="res://Cenas/Espaco/diamante.gd" id="1_p6fmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6fmq"]
+size = Vector2(15, 17)
+
+[node name="Diamante" type="Area2D" unique_id=2106979450]
+collision_layer = 32
+script = ExtResource("1_p6fmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1747511190]
+position = Vector2(-1, 12)
+texture = ExtResource("1_k1nqo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533802084]
+shape = SubResource("RectangleShape2D_p6fmq")

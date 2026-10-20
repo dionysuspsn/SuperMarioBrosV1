@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://binsaaypkxexw"]
+
+[ext_resource type="Script" uid="uid://cd6tr658ro8x8" path="res://Cenas/Espaco/armadilha_explosiva.gd" id="1_olayv"]
+[ext_resource type="Texture2D" uid="uid://crbtp18thevy" path="res://Assets Super Mario Bros/Sprites/Espaco/Armadilha.png" id="2_ff52d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwyqw"]
+size = Vector2(5, 4)
+
+[node name="ArmadilhaExplosiva" type="Area2D" unique_id=1473665143]
+collision_layer = 16
+script = ExtResource("1_olayv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2015466604]
+position = Vector2(0, -0.99999994)
+scale = Vector2(0.08593743, 0.0703125)
+texture = ExtResource("2_ff52d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1091861413]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bwyqw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
