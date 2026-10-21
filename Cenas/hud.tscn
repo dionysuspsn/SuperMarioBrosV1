@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5l68okc8glln"]
 
-[ext_resource type="Script" uid="uid://bvsmmc7elqdlk" path="res://Cenas/hud.gd" id="1_1pfdj"]
+[ext_resource type="Script" uid="uid://bvsmmc7elqdlk" path="res://Scripts/hud.gd" id="1_1pfdj"]
 [ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://Assets Super Mario Bros/Fonts/font.ttf" id="2_5udud"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1781022856]

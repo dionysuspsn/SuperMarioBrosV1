@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://do3ht5dg6mee"]
 
-[ext_resource type="Script" uid="uid://dn8p085st7tjq" path="res://Cenas/final_fase.gd" id="1_e4nni"]
+[ext_resource type="Script" uid="uid://dn8p085st7tjq" path="res://Scripts/final_fase.gd" id="1_e4nni"]
 [ext_resource type="Texture2D" uid="uid://ir6sodu1lnqy" path="res://Assets Super Mario Bros/Sprites/FlagPole.png" id="2_0qi6k"]
 [ext_resource type="Texture2D" uid="uid://d2wjjqv82whrs" path="res://Assets Super Mario Bros/Sprites/Flag.png" id="3_5ifx0"]
 

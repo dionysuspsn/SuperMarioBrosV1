@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://binsaaypkxexw"]
 
-[ext_resource type="Script" uid="uid://cd6tr658ro8x8" path="res://Cenas/Espaco/armadilha_explosiva.gd" id="1_olayv"]
+[ext_resource type="Script" uid="uid://cd6tr658ro8x8" path="res://Scripts/Espaço/armadilha_explosiva.gd" id="1_olayv"]
 [ext_resource type="Texture2D" uid="uid://crbtp18thevy" path="res://Assets Super Mario Bros/Sprites/Espaco/Armadilha.png" id="2_ff52d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwyqw"]
