@@ -15,7 +15,7 @@ const BIG_MARIO_SHAPE = preload("res://Resources/CollisionShapes/big_mario.tres"
 @onready var area_2d = $Area2D
 
 @export_group("Locomotion")
-@export var run_speed_damping = 0.5
+@export var run_speed_damping = 20
 @export var speed = 200.0
 @export var jump_velocity = -350
 @export var gravity: float = 980.0
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = lerp(velocity.x, speed * direction, run_speed_damping * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * delta)
+		velocity.x = move_toward(velocity.x, 0, speed *10* delta)
 		
 	animated_sprite_2d.trigger_animation(velocity, direction, player_mode)
 

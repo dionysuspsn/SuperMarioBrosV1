@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gcmmey1whhv6"]
 
-[ext_resource type="Script" uid="uid://gdlynxroagus" path="res://Cenas/koopa.gd" id="1_40ahn"]
+[ext_resource type="Script" uid="uid://gdlynxroagus" path="res://Scripts/koopa.gd" id="1_40ahn"]
 [ext_resource type="Texture2D" uid="uid://cvr7a0tkflkwd" path="res://Assets Super Mario Bros/Sprites/Espaco/Koopa_Shell.png" id="2_dyw3u"]
 [ext_resource type="Texture2D" uid="uid://m406760syq42" path="res://Assets Super Mario Bros/Sprites/Espaco/Koopa_Walk1.png" id="3_8g375"]
 [ext_resource type="Texture2D" uid="uid://r2y6bn280e23" path="res://Assets Super Mario Bros/Sprites/Espaco/Koopa_Walk2.png" id="4_nj2ay"]

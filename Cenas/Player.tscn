@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coflx4bcyd2o0"]
 
-[ext_resource type="Script" uid="uid://dicbbomij7tw4" path="res://Cenas/player.gd" id="1_gxa6g"]
+[ext_resource type="Script" uid="uid://dicbbomij7tw4" path="res://Scripts/player.gd" id="1_gxa6g"]
 [ext_resource type="Texture2D" uid="uid://d3jwm15et3t22" path="res://Assets Super Mario Bros/Sprites/Mario_Small_Idle.png" id="1_ybxfy"]
 [ext_resource type="Texture2D" uid="uid://bausni6inywyv" path="res://Assets Super Mario Bros/Sprites/Mario_Small_Death.png" id="2_e4l8r"]
 [ext_resource type="Shape2D" uid="uid://bo1nsuv07t5nj" path="res://Resources/CollisionShapes/small_mario.tres" id="2_gxa6g"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cipjmquw1tlrv" path="res://Assets Super Mario Bros/Sprites/Mario_Shooting_Run2.png" id="14_jwbth"]
 [ext_resource type="Texture2D" uid="uid://daqnle02fss6v" path="res://Assets Super Mario Bros/Sprites/Mario_Shooting_Run3.png" id="15_fi7at"]
 [ext_resource type="Texture2D" uid="uid://1w6lqgnlyqo2" path="res://Assets Super Mario Bros/Sprites/Mario_Shooting-Slide.png" id="16_k5lhy"]
-[ext_resource type="Script" uid="uid://3lov12uyenx7" path="res://Cenas/animated_sprite_2d.gd" id="25_eiq6q"]
+[ext_resource type="Script" uid="uid://3lov12uyenx7" path="res://Scripts/animated_sprite_2d.gd" id="25_eiq6q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8o4j"]
 animations = [{

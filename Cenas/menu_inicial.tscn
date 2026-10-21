@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0qn3kdd82sqo"]
 
 [ext_resource type="FontFile" uid="uid://dm3ch1vmt4ixr" path="res://Assets Super Mario Bros/Fonts/font.ttf" id="1_4ahfv"]
-[ext_resource type="Script" uid="uid://d0rjohq5xgs7w" path="res://Cenas/menu_inicial.gd" id="1_sm8o4"]
+[ext_resource type="Script" uid="uid://d0rjohq5xgs7w" path="res://Scripts/menu_inicial.gd" id="1_sm8o4"]
 
 [node name="MenuInicial" type="Control" unique_id=312621124]
 layout_mode = 3
